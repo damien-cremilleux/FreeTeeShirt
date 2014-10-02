@@ -2,3 +2,12 @@ umadbro
 =======
 
 Short concise commands for security tools.
+
+## Want to make a addition to a page?
+* File an issue with your command, and output.
+* Fork the project and merge (will check merge request daily)
+* Ask to become a member of the repo!
+
+
+
+Idea taken from: bropages.org
