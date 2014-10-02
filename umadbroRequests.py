@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import urllib, sys
+import urllib2, sys
 __author__ = 'jared'
 
 
@@ -15,16 +15,15 @@ class Request:
     # Return: Nothing.
     def make_request(self, command):
 
-        tool_list= self.check_args(command)
-
+        tool_list = self.check_args([command])
         for tool in tool_list:
 
-            req = urllib.urlopen('http://umadbro.pw/'+str(command))
-
+            req = urllib2.urlopen('http://umadbro.pw/'+str(command))
+            html = req.read()
             if req.getcode() != 200: # File doesn't exist
                 print("Error! that page doesn't exist! (yet!)\n")
             else:
-                print(req)
+                print(html)
 
     # Name: check_args
     # Param: self, command line arguments
@@ -38,6 +37,4 @@ class Request:
             print("Error! please enter an tool!/n Ex: umadbro 'toolname' ")
             sys.exit()
         else:
-            usr_arg.pop(0)  # removing the 0 element of argument (the script name)
-
-        return usr_arg
+            return usr_arg
