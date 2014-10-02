@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import sys, requests
+import urllib
 __author__ = 'jared'
 
 
@@ -11,10 +11,12 @@ class Request:
 
     def make_request(self, command):
 
-        req = requests.get('http://104.131.22.131/'+str(command), stream=True)
+        req = urllib.urlopen('http://umadbro.pw/'+str(command))
 
-        if req.status_code != 200:
-            print("Error! that page doesn't exist!")
+        if req.getcode() != 200: # File doesn't exist
+            print("Error! that page doesn't exist! (yet!)")
         else:
-            print(req.raw.read())
+            print(req)
+
+
 
