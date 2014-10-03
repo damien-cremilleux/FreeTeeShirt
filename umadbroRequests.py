@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import urllib2, sys
-__author__ = 'jared'
-
+__author__ = 'Jared Stroud'
 
 class Request:
     ''' Requests class handles receiving information from umadbro website'''
@@ -15,15 +14,16 @@ class Request:
     # Return: Nothing.
     def make_request(self, command):
 
-        tool_list = self.check_args([command])
-        for tool in tool_list:
-
-            req = urllib2.urlopen('http://umadbro.pw/'+str(command))
-            html = req.read()
-            if req.getcode() != 200: # File doesn't exist
-                print("Error! that page doesn't exist! (yet!)\n")
-            else:
-                print(html)
+            try:
+                req = urllib2.urlopen('http://umadbro.pw/'+str(command))
+                if req.getcode() != 200: # File doesn't exist
+                    print("Error! that page doesn't exist! (yet!)\n")
+                    sys.exit()
+                else:
+                   html = req.read()
+                   print(html)
+            except urllib2.HTTPError as conn_error:
+                print("[-] Error!!\n\t" + str(conn_error))
 
     # Name: check_args
     # Param: self, command line arguments
@@ -31,10 +31,9 @@ class Request:
     #          Script exits if nothing is found.
     # Return: Array of searchable items
     def check_args(self, usr_arg):
-        arg_len = len(usr_arg)
-
+        arg_len = len(sys.argv)
         if arg_len == 0:
-            print("Error! please enter an tool!/n Ex: umadbro 'toolname' ")
+            print("Error! please enter an tool! Ex: umadbro 'toolname' ")
             sys.exit()
         else:
-            return usr_arg
+            return [usr_arg]
