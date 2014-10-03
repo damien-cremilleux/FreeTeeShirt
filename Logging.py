@@ -5,14 +5,14 @@ import urllib2
 class Loggy:
 
     def __init__(self):  # Creation of log file when object is made.
-        self.log_file = open("/tmp/umadbro.log", 'w+')
+        self.log_file = open("/tmp/umadbro.log", 'a+')
 
     # Name: log
     # Purpose: Log commands for debugging purposes.
     # Param: str(command) that's attempting to be executed
     # Return: Nothing
     def log(self, command):
-        self.log_file.write(command)
+        self.log_file.write(command + "\n")
 
     # Name: post_log
     # Purpose: send an HTTP PUT message to umadbro server
