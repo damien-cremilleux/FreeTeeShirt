@@ -19,12 +19,14 @@ class Loggy:
     #          to figure out what aren't working and docs to add.
     # Return: Nothing
     def post_log(self):
-        tmp_contents = self.log_file.read("/tmp/umadbro.log")
+        tmp_contents = self.log_file.read()
         opener = urllib2.build_opener(urllib2.HTTPHandler)
-        request = urllib2.Request('http://umadbro.pw', data=tmp_contents)
+        request = urllib2.Request('http://umadbro.pw', str(tmp_contents))
         request.add_header('Content-Type', 'text/umad_requests')
-        request.get_method = lambda: 'PUT'
-        url = opener.open(request)
+        request.get_method = 'PUT'
+
+
+
 
     # name: close
     # Purpose: close file after writing/reading has occurred.
