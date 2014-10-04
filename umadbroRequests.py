@@ -31,6 +31,7 @@ class Request:
                       "\n\t We'll try to add the page you requested soon!"
                      )
                 self.req_log.log(str(command))
+                self.req_log.post_log()
                 self.req_log.close()
 
     # Name: check_args
