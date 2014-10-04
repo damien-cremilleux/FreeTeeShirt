@@ -1,0 +1,37 @@
+Nmap ("Network Mapper")
+
+Slow scan: T0
+Fast scan: T5
+T1-T4 progressively get faster.
+
+
+Command: nmap -p 80 --script http-title -Pn -n google.com
+
+Result:
+
+Starting Nmap 6.45 ( http://nmap.org ) at 2014-04-21 22:19 HST
+Nmap scan report for google.com (72.234.39.57)
+Host is up (0.014s latency).
+Other addresses for google.com (not scanned): 72.234.39.45 72.234.39.59 72.234.39.38 72.234.39.49 72.234.39.30 72.234.39.34 72.234.39.23 72.234.39.27 72.234.39.44 72.234.39.29 72.234.39.19 72.234.39.42 72.234.39.15 72.234.39.53
+PORT   STATE SERVICE
+80/tcp open  http
+| http-title: Google
+|_Requested resource was http://www.google.com/
+
+Intense Scan
+nmap -T4 -A -v -PE -PS22,25,80 -PA21,23,80,3389
+
+Intense Scan, All TCP Ports
+nmap -p 1-65535 -T4 -A -v -PE -PS22,25,80 -PA21,23,80,3389
+
+Intense Scan, No Ping
+nmap -T4 -A -v -PN
+
+Slow Comprehensive Scan
+nmap -sS -sU -T4 -A -v -PE -PP -PS21,22,23,25,80,113,31339 -PA80,113,443,10042 -PO --script all
+
+
+
+
+source(s):
+bhttp://bloggins-sec.blogspot.com/2013/01/bashpentesting-one-liners-and-stuff.html
