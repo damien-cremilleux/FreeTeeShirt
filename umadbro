@@ -2,7 +2,10 @@
 __author__ = 'jared'
 
 import umadbroRequests, sys
-
 madRequest = umadbroRequests.Request()
 
-madRequest.make_request(sys.argv[1])
+
+usr_args = sys.argv[1]
+madRequest.make_request(usr_args)
+
+
