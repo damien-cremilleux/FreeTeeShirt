@@ -1,0 +1,16 @@
+Python One Liners.
+
+Start a web server that serves the local files on port 8000, single threaded
+	command: python -m SimpleHTTPServer 8000
+
+
+Spawn bash shell prompt
+	command: python -c 'import pty; pty.spawn("/bin/bash")'
+
+
+
+Run OS commands through Python Interpreter
+	command: python -c 'import os; os.system("command here")
+
+
+Source: pwnwiki.io/#!scripting/python.md
