@@ -34,4 +34,4 @@ nmap -sS -sU -T4 -A -v -PE -PP -PS21,22,23,25,80,113,31339 -PA80,113,443,10042 -
 
 
 source(s):
-bhttp://bloggins-sec.blogspot.com/2013/01/bashpentesting-one-liners-and-stuff.html
+http://bloggins-sec.blogspot.com/2013/01/bashpentesting-one-liners-and-stuff.html
