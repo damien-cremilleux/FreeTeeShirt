@@ -7,7 +7,6 @@ class Request:
     ''' Requests class handles receiving information from umadbro website'''
 
     def __init__(self):
-        print("Successfully created object!")
         self.req_log = Logging.Loggy()
 
     # Name: make_request
