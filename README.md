@@ -1,7 +1,7 @@
 umadbro
 =======
 
-Short concise commands for security tools.
+Man pages for security tools.
 
 ## Want to make a addition to a page?
 * File an issue with your command, and output.
