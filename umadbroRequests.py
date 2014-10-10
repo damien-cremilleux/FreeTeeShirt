@@ -16,7 +16,7 @@ class Request:
     def make_request(self, command):
 
             try:
-                req = urllib2.urlopen('http://umadbro.pw/'+str(command))
+                req = urllib2.urlopen('http://umadbro.pw/pages/'+str(command))
                 if req.getcode() != 200:  # File doesn't exist.
                     print("Error! that page doesn't exist! (yet!)\n")
                     self.req_log.log(str(command))
