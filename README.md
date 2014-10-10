@@ -1,4 +1,4 @@
-[umadbro](http://www.umadbro.pw)
+umadbro
 =======
 
 Man pages for security tools.
@@ -10,4 +10,4 @@ Man pages for security tools.
 
 
 
-Idea taken from: bropages.org
+Inspired by: bropages.org
