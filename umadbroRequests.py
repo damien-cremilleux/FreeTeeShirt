@@ -1,6 +1,9 @@
 #!/usr/bin/env python
-import Logging, urllib2, sys
-__author__ = 'Jared Stroud'
+import Logging
+import urllib2
+import sys
+import re
+__author__ = 'Jared Stroud', "Andrew Garbutt"
 
 
 class Request:
@@ -15,29 +18,32 @@ class Request:
     # Return: Nothing.
     def make_request(self, command):
 
-            try:
-                req = urllib2.urlopen('http://umadbro.pw/pages/'+str(command))
-                if req.getcode() != 200:  # File doesn't exist.
-                    print("Error! that page doesn't exist! (yet!)\n")
-                    self.req_log.log(str(command))
-                    self.req_log.close()
-                    sys.exit()
-                else:
-                   html = req.read()
-                   print(html)
-            except urllib2.HTTPError as conn_error:
-                print("[-] Error!!\n\t" + str(conn_error) +
-                      "\n\t We'll try to add the page you requested soon!"
-                     )
-                self.req_log.log(str(command))
-                self.req_log.post_log()
-                self.req_log.close()
+            if command == "list":
+                self.list_tools()
+            else:
+                try:
+                    req = urllib2.urlopen('http://umadbro.pw/pages/'+str(command))
+                    if req.getcode() != 200:  # File doesn't exist.
+                        print("Error! that page doesn't exist! (yet!)\n")
+                        self.req_log.log(str(command))
+                        self.req_log.close()
+                        sys.exit()
+                    else:
+                        html = req.read()
+                        print(html)
+                except urllib2.HTTPError as conn_error:
+                    print("[-] Error!!\n\t" + str(conn_error) +
+                          "\n\t We'll try to add the page you requested soon!")
+
+            self.req_log.log(str(command))
+            self.req_log.post_log()
+            self.req_log.close()
 
     # Name: check_args
     # Param: self, command line arguments
     # Purpose: Checking the user passed in tools to search.
     #          Script exits if nothing is found.
-    # Return: Array of searchable items
+    # Return: Array of searchable items 
     def check_args(self, usr_arg):
         arg_len = len(sys.argv)
         if arg_len == 0:
@@ -45,3 +51,21 @@ class Request:
             sys.exit()
         else:
             return [usr_arg]
+
+    # Author: Andrew Garbutt
+    # Name: list_tools
+    # Param: none
+    # Purpose:  check current available online tool pages.
+    # Return: none.
+    def list_tools(self ):
+        url = 'http://www.umadbro.pw/pages/'
+        response = urllib2.urlopen(url)
+        html = response.read()
+
+        #Parse source code to find links
+        links = re.findall('href=[a-z\"A-Z0-9]+\"', html)
+
+        #Print out just the name of the commands
+        for cur_link in links:
+            end_substr_len = (len(cur_link) - 1)
+            print cur_link[6:end_substr_len]
