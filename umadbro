@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-__author__ = 'jared'
+__author__ = 'Jared Stroud', "Andrew Garbutt"
 
 import umadbroRequests, sys
 madRequest = umadbroRequests.Request()
