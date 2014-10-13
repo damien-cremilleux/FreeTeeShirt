@@ -7,9 +7,9 @@ class Loggy:
 
     def __init__(self):  # Creation of log file when object is made.
         if platform.system() == "Windows":
+            self.log_file = open("C:\\tmp\\umadbro.log", 'a+')
+        else: # Must be a unix system.
             self.log_file = open("/tmp/umadbro.log", 'a+')
-        else:
-            self.log_file = open('C:\tmp\umadbro.log', 'a+')
 
     # Name: log
     # Purpose: Log commands for debugging purposes.
