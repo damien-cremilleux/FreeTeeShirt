@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 __author__ = 'jared'
 import urllib2
+import platform
 
 class Loggy:
 
     def __init__(self):  # Creation of log file when object is made.
-        self.log_file = open("/tmp/umadbro.log", 'a+')
+        if platform.system() == "Windows":
+            self.log_file = open("/tmp/umadbro.log", 'a+')
+        else:
+            self.log_file = open('C:\tmp\umadbro.log', 'a+')
 
     # Name: log
     # Purpose: Log commands for debugging purposes.
@@ -24,8 +28,6 @@ class Loggy:
         request = urllib2.Request('http://umadbro.pw', str(tmp_contents))
         request.add_header('Content-Type', 'text/umad_requests')
         request.get_method = 'PUT'
-
-
 
 
     # name: close
