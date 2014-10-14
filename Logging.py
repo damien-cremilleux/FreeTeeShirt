@@ -7,8 +7,8 @@ import tempfile
 class Loggy:
 
     def __init__(self):  # Creation of log file when object is made.
-        self.log_file = tempfile.gettempdir() + '/umadbro.log'
-
+        self.log_file = open(tempfile.gettempdir() + '/umadbro.log', "a+")
+		
     # Name: log
     # Purpose: Log commands for debugging purposes.
     # Param: str(command) that's attempting to be executed
