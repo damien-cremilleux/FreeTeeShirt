@@ -5,7 +5,11 @@ import umadbroRequests, sys
 madRequest = umadbroRequests.Request()
 
 
-usr_args = sys.argv[1]
-madRequest.make_request(usr_args)
+if sys.argv != 1:
+    print("Usage: umadbro tool_name")
+    sys.exit()
+else:
+    usr_args = sys.argv[1]
+    madRequest.make_request(usr_args)
 
 
