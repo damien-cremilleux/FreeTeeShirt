@@ -14,7 +14,7 @@ class Loggy:
     # Param: str(command) that's attempting to be executed
     # Return: Nothing
     def log(self, command):
-        self.log_file.write(command + "\n")
+        self.log_path.write(command + "\n")
 
     # Name: post_log
     # Purpose: send an HTTP PUT message to umadbro server
