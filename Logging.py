@@ -7,14 +7,14 @@ import tempfile
 class Loggy:
 
     def __init__(self):  # Creation of log file when object is made.
-        log_path = open(tempfile.gettempdir() + '/umadbro.log', "a+")
+        self.log_file = open(tempfile.gettempdir() + '/umadbro.log', "a+")
 
     # Name: log
     # Purpose: Log commands for debugging purposes.
     # Param: str(command) that's attempting to be executed
     # Return: Nothing
     def log(self, command):
-        self.log_path.write(command + "\n")
+        self.log_file.write(command + "\n")
 
     # Name: post_log
     # Purpose: send an HTTP PUT message to umadbro server
