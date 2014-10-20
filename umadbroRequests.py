@@ -29,7 +29,8 @@ class Request:
                         print(html)
 						
                 except urllib2.HTTPError as conn_error:
-					print("[-] Error!!\n\t" + str(conn_error) + "\n\tWe'll try to add the page you requested soon!")
+					print("[-] Error!!\n\t" + str(conn_error) + 
+					"\n\tWe'll try to add the page you requested soon!")
 					self.req_log.log(str(command))
 					self.req_log.post_log()
 					self.req_log.close()
