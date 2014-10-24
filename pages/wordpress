@@ -1,0 +1,11 @@
+
+# Scanning wordpress site for vulnerabilities.
+./wpscan.rb --url *url to target* --enumerate p
+
+# Password brute forcer
+./wpscan.rb --url *url to target* --wordlist *your wordlist* --username *username to target*
+
+
+#Wordpress available at wpscan.org
+#Source: http://www.wpsecure.net/
+#Source: http://pwnwiki.io/#!tech/web/apps/wordpress.md
