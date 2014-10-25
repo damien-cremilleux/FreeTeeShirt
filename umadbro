@@ -5,7 +5,7 @@ import umadbroRequests, sys
 madRequest = umadbroRequests.Request()
 
 
-if len(sys.argv) != 2:
+if len(sys.argv) != 2: # If there's no argument throw an error.
     print("Usage: umadbro tool_name")
     sys.exit()
 else:

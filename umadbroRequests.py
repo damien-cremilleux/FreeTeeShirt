@@ -3,7 +3,7 @@ import Logging
 import urllib2
 import sys
 import re
-__author__ = 'Jared Stroud', "Andrew Garbutt"
+__author__ = 'Jared Stroud', 'Andrew Garbutt'
 
 
 class Request:
@@ -34,6 +34,10 @@ class Request:
 			self.req_log.log(str(command))
 			self.req_log.post_log() #Sending error log to umadbro.pw
 			self.req_log.close()
+					print("[-] Error!!\n\t" + str(conn_error) + 
+					"\n\tWe'll try to add the page you requested soon!")
+					self.req_log.log(str(command))
+					self.req_log.post_log()
 
     # Name: check_args
     # Param: self, command line arguments
