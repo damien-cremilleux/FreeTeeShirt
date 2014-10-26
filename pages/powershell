@@ -1,0 +1,10 @@
+
+
+#Query domain admins
+Get-ADGroupMember -Credential $cred -server domain.com "Domain Admins"
+
+#Enumerate all servers on domain
+Command with arguments: Get-ADComputer -Credential $cred -server pwnt.com -LDAPFilter "(&(objectCategory=computer)(opera tingSystem=*Server*))" |select name
+
+#Source:
+# http://pwnwiki.io/#!scripting/powershell.md
