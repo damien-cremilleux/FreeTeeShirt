@@ -1,9 +1,14 @@
 Nmap ("Network Mapper")
 
-Command: nmap -p 80 --script http-title -Pn -n google.com
-Sudo: Calls nmap to "google.com" to check status of port 80 and resolve the HTTP title.
+Slow scan: T0
+Fast scan: T5
+T1-T4 progressively get faster.
 
-Output:
+
+Command: nmap -p 80 --script http-title -Pn -n google.com
+
+Result:
+
 Starting Nmap 6.45 ( http://nmap.org ) at 2014-04-21 22:19 HST
 Nmap scan report for google.com (72.234.39.57)
 Host is up (0.014s latency).
@@ -13,152 +18,20 @@ PORT   STATE SERVICE
 | http-title: Google
 |_Requested resource was http://www.google.com/
 
------------------------------------------
-Get Nmap GUI (Zenmap)
-"sudo apt-get install zenmap"
-
-Saving Output (Saves Nmap Output to File)
-"nmap -oN /path/to/filename xxx.xxx.xxx.xxx"
-
-
-Speed Modifiers:
-
-Slow scan: T0
-Fast scan: T5
-T1-T4 progressively get faster.
-
-
-Simple Scans:
-
-Single IP (Scans a single IP/Host)
-"nmap -v xxx.xxx.xxx.xxx" or "nmap -v server.mywebsite.com"
-
-Range Scan (Scans Range y to z)
-"nmap -v xxx.xxx.xxx.y-z"
-
-Wildcard Scan (Scan Range of 4th Octet)
-"nmap -v xxx.xxx.xxx.*"
-
-Subnet Scan (Scans Entire Subnet)
-"nmap -v xxx.xxx.xxx.0/24"
-
-Scan Exclusion (Scans Entire Subnet Excluding yyy...)
-"nmap -v xxx.xxx.xxx.0/24 --exclude yyy.yyy.yyy.yyy"
-
-Fast Scan (Accelerated yet Limited Scan)
-"nmap -v -F xxx.xxx.xxx.xxx"
-
-Stealthy Scan (Performs a Ninja Scan)
-"nmap -v -sS xxx.xxx.xxx.xxx"
-
-IP Ping Host (IP Ping)
-"nmap -PO xxx.xxx.xxx.xxx"
-
-UDP Ping Host (UDP Ping)
-"nmap -PU xxx.xxx.xxx.xxx"
-
-Detection Scan (OS and Version Scanning)
-"nmap -v -A xxx.xxx.xxx.xxx"
-
-Host Discovery (Scans for Servers/Devices)
-"nmap -v -sP xxx.xxx.xxx.0/24"
-
-Remote Detection (Detects Remote Operating System and Apps)
-"nmap -v -O xxx.xxx.xxx.xxx"
-
-Firewall Scan (Scans Host/Network for Active Firewall)
-"nmap -v -sA xxx.xxx.xxx.xxx" or "nmap -v -sA server.mywebsite.com"
-
-Packet Trace (Shows All Packets)
-"nmap --packet-trace xxx.xxx.xxx.xxx" or "nmap --packet-trace server.mywebsite.com"
-
-Interfaces and Routes (Shows Host Interfaces and Routes)
-"nmap --iflist"
-
-
-Port Specific:
-
-Scan Port (Scans Port yy)
-"nmap -p yy xxx.xxx.xxx.xxx"
- 
-Scan TCP Port (Scans TCP Port yy)
-"nmap -p T:yy xxx.xxx.xxx.xxx"
- 
-Scan UDP Port (Scans UDP Port yy)
-"nmap -p U:yy xxx.xxx.xxx.xxx"
-
-Scan UDP Services (Scans Host for UDP Services)
-"nmap -sU xxx.xxx.xxx.xxx"
- 
-Scan 2 Ports (Scans Ports xx and yyy)
-"nmap -p xx,yyy xxx.xxx.xxx.xxx"
- 
-Scan Port Range (Scans Range xx to yyy)
-"nmap -p xx-yyy xxx.xxx.xxx.xxx"
-
-Wildcard Port Scan (Scans All Ports)
-"nmap -p "*" xxx.xxx.xxx.xxx"
-
-Fast Network Port (Quickly Scans Subnet for Open Ports)
-"nmap -T5 xxx.xxx.xxx.0/24"
-
-Open Ports (Displays All Open Ports)
-"nmap --open xxx.xxx.xxx.xxx" or "nmap --open server.mywebsite.com"
-
-Scan Top Ports (Scans the Top z Most Common Ports)
-"nmap --top-ports z xxx.xxx.xxx.xxx"
-
-TCP Connect Scan (Scans Commonly Used TCP Ports)
-"nmap -sT xxx.xxx.xxx.xxx"
-
-TCP/ACK Scan (Scans Commonly Used TCP Ports)
-"nmap -sA xxx.xxx.xxx.xxx"
-
-TCP Window Scan (Scans Commonly Used TCP Ports)
-"nmap -sW xxx.xxx.xxx.xxx"
-
-TCP Maimon Scan (Scans Commonly Used TCP Ports)
-"nmap -sM xxx.xxx.xxx.xxx"
-
-
-Complex Scans:
-
 Intense Scan
-"nmap -T4 -A -v -PE -PS22,25,80 -PA21,23,80,3389 xxx.xxx.xxx.xxx"
+nmap -T4 -A -v -PE -PS22,25,80 -PA21,23,80,3389
 
 Intense Scan, All TCP Ports
-"nmap -p 1-65535 -T4 -A -v -PE -PS22,25,80 -PA21,23,80,3389 xxx.xxx.xxx.xxx"
+nmap -p 1-65535 -T4 -A -v -PE -PS22,25,80 -PA21,23,80,3389
 
 Intense Scan, No Ping
-"nmap -T4 -A -v -PN xxx.xxx.xxx.xxx"
+nmap -T4 -A -v -PN
 
-Slow Comprehensive Scan 
-"nmap -sS -sU -T4 -A -v -PE -PP -PS21,22,23,25,80,113,31339 -PA80,113,443,10042 -PO --script all xxx.xxx.xxx.xxx"
-
-Cloak Scanning w/ Decoys (Cloak Scans with 2 Decoys Targeting Host IP)
-"nmap -n -Dyyy.yyy.yyy.yyy,zzz.zzz.zzz.zzz, xxx.xxx.xxx.xxx"
+Slow Comprehensive Scan
+nmap -sS -sU -T4 -A -v -PE -PP -PS21,22,23,25,80,113,31339 -PA80,113,443,10042 -PO --script all
 
 
-Firewall Vulnerability:
 
-MAC Spoofing (Spoofs MAC Address)
-"nmap --spoof-mac <MAC-ADDRESS> xxx.xxx.xxx.xxx"
-
-TCP Null Scan (Tricks Firewall to Give a Response)
-"nmap -sN xxx.xxx.xxx.xxx"
-
-TCP Fin Scan (Checks Firewall)
-"nmap -sF xxx.xxx.xxx.xxx"
-
-TCP Xmas Scan (Checks Firewall)
-"nmap -sX xxx.xxx.xxx.xxx"
-
-Packet Fragment Scan (Scans Firewall for Packet Fragmentation)
-"nmap -f xxx.xxx.xxx.xxx"
-
-MTU Offset (Offsets Maximum Transmission Unit by z)
-"nmap --mtu z xxx.xxx.xxx.xxx"
 
 source(s):
 http://bloggins-sec.blogspot.com/2013/01/bashpentesting-one-liners-and-stuff.html
-http://www.cyberciti.biz/networking/nmap-command-examples-tutorials/
